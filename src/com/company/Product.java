@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.HashSet;
-
 public abstract class Product {
     private static final double IMPORTED_TAX_RATE = 0.05;
     int productQuantity;

@@ -17,7 +17,7 @@ class Receipt  {
      * Return Type: double
      */
     private double calculateSalesTax(Product product) {
-        return Math.round(20 * (product.productPrice * product.getSalesTaxRate()))/20.0;
+        return Math.ceil(20 * (product.productPrice * product.getSalesTaxRate()))/20.0;
     }
     /* Method Name: calculateImportedTax
      * Description:
@@ -25,7 +25,7 @@ class Receipt  {
      * Return Type: double
      */
     private double calculateImportedTax(Product product) {
-        return Math.round(10 * (product.productPrice * product.getImportedTaxRate()))/10.0;
+        return Math.ceil(20 * (product.productPrice * product.getImportedTaxRate()))/20.0;
     }
     /* Method Name: getProductPriceWithTaxes
      * Description:

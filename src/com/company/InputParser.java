@@ -42,7 +42,7 @@ class InputParser {
                 productName = m.group(4).trim();
                 productPrice = Double.parseDouble(m.group(7));
             }
-            // TODO: there may be better way.
+            // TODO: there may be better way. Look for factory pattern
             Product product = null;
             if(productName.contains("book"))
                 product = new Book(productQuantity, isImported, productName, productPrice);
