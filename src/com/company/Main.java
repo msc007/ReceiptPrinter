@@ -11,6 +11,6 @@ public class Main {
         ArrayList<Product> shoppingBasket = parser.parseInputFile();
         // Create receipt for the shoppingBasket and print
         Receipt receipt = new Receipt(shoppingBasket);
-        receipt.print();
+        receipt.printReceipt();
     }
 }
