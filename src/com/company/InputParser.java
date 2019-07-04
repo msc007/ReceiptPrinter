@@ -28,6 +28,8 @@ class InputParser {
         boolean isImported = false;
         String productName = "";
         double productPrice = 0.0;
+        ProductFactory pf = new ProductFactory();
+        Product product;
 
         // Read each line from input text
         while (sc.hasNextLine()) {
@@ -42,20 +44,10 @@ class InputParser {
                 productName = m.group(4).trim();
                 productPrice = Double.parseDouble(m.group(7));
             }
-            // TODO: there may be better way. Look for factory pattern
-            Product product = null;
-            if(productName.contains("book"))
-                product = new Book(productQuantity, isImported, productName, productPrice);
-            else if(productName.contains("CD"))
-                product = new CD(productQuantity, isImported, productName, productPrice);
-            else if(productName.contains("chocolate"))
-                product = new Food(productQuantity, isImported, productName, productPrice);
-            else if(productName.contains("perfume"))
-                product = new Perfume(productQuantity, isImported, productName, productPrice);
-            else if(productName.contains("headache pills"))
-                product = new Medical(productQuantity, isImported, productName, productPrice);
 
-            // Add product to shopping basket
+            // Send values to productFactory to create product
+            product = pf.createProduct(productQuantity, isImported, productName, productPrice);
+            // Add created product to shoppingBasket
             shoppingBasket.add(product);
         }
         return shoppingBasket;

@@ -1,5 +1,8 @@
 package com.company;
-
+/* Class Name: TaxableProduct
+ * Description: Super class of all the taxable product category
+ * Inheritance: TaxableProduct extends Product
+ */
 public abstract class TaxableProduct extends Product {
     private static final double SALES_TAX_RATE = 0.1;
 

@@ -1,6 +1,9 @@
 package com.company;
 import java.util.ArrayList;
-
+/* Class Name: Receipt
+ * Description: Process receipt and Print receipt
+ * Inheritance: None
+ */
 class Receipt  {
     private ArrayList<Product> shoppingBasket;
     /* Constructor Name: Receipt
@@ -12,7 +15,7 @@ class Receipt  {
         this.shoppingBasket = shoppingBasket;
     }
     /* Method Name: calculateSalesTax
-     * Description:
+     * Description: calculate sales tax of 1 product
      * Parameter: Product object
      * Return Type: double
      */
@@ -20,7 +23,7 @@ class Receipt  {
         return Math.ceil(20 * (product.productPrice * product.getSalesTaxRate()))/20.0;
     }
     /* Method Name: calculateImportedTax
-     * Description:
+     * Description: calculate imported tax of 1 product
      * Parameter: Product
      * Return Type: double
      */
@@ -32,11 +35,11 @@ class Receipt  {
      * Parameter: Product
      * Return Type: double
      */
-    private double getProductPriceWithTaxes(Product product) {
+    private double calculateProductPriceWithTaxes(Product product) {
         double priceWithTaxes = product.productPrice + calculateSalesTax(product);
         if(product.isImported)
             priceWithTaxes += calculateImportedTax(product);
-        return priceWithTaxes;
+        return product.productQuantity * priceWithTaxes;
     }
     /* Method Name: calculateTotalSalesTaxes
      * Description:
@@ -46,9 +49,9 @@ class Receipt  {
     private double calculateTotalSalesTaxes() {
         double totalSalesTax = 0.0;
         for(Product product : shoppingBasket) {
-            totalSalesTax += calculateSalesTax(product);
+            totalSalesTax += (calculateSalesTax(product) * product.productQuantity);
             if(product.isImported)
-                totalSalesTax += calculateImportedTax(product);
+                totalSalesTax += (calculateImportedTax(product) * product.productQuantity);
         }
         return totalSalesTax;
     }
@@ -60,7 +63,7 @@ class Receipt  {
     private double calculateTotal() {
         double total = 0;
         for (Product product : shoppingBasket) {
-            total += getProductPriceWithTaxes(product);
+            total += calculateProductPriceWithTaxes(product);
         }
         return total;
     }
@@ -73,7 +76,7 @@ class Receipt  {
         StringBuilder output = new StringBuilder();
         for (Product product : shoppingBasket) {
             output.append(String.format("%d %s%s: %.2f\n",product.productQuantity, product.isImported? "imported ": "",
-                                                      product.productName, getProductPriceWithTaxes(product)));
+                                                      product.productName, calculateProductPriceWithTaxes(product)));
         }
         output.append( String.format("Sales Taxes: %.2f\n", calculateTotalSalesTaxes()));
         output.append(String.format("Total: %.2f", calculateTotal()));
