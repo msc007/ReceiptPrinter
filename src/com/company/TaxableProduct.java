@@ -3,7 +3,7 @@ package com.company;
  * Description: Super class of all the taxable product category
  * Inheritance: TaxableProduct extends Product
  */
-public abstract class TaxableProduct extends Product {
+abstract class TaxableProduct extends Product {
     private static final double SALES_TAX_RATE = 0.1;
 
     /* Constructor Name: TaxableProduct
@@ -11,7 +11,7 @@ public abstract class TaxableProduct extends Product {
      * Parameter: product information
      * Return Type: None
      */
-    TaxableProduct(int productQuantity, boolean isImported, String productName, double productPrice){
+    TaxableProduct(int productQuantity, boolean isImported, String productName, double productPrice) {
         super(productQuantity, isImported, productName, productPrice);
     }
 
@@ -20,7 +20,7 @@ public abstract class TaxableProduct extends Product {
      * Parameter: None
      * Return Type: constant double
      */
-    public double getSalesTaxRate() {
+    double getSalesTaxRate() {
         return SALES_TAX_RATE;
     }
 

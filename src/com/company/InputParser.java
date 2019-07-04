@@ -28,7 +28,7 @@ class InputParser {
         boolean isImported = false;
         String productName = "";
         double productPrice = 0.0;
-        ProductFactory pf = new ProductFactory();
+        ProductFactory productFactory = new ProductFactory();
         Product product;
 
         // Read each line from input text
@@ -46,8 +46,8 @@ class InputParser {
             }
 
             // Send values to productFactory to create product
-            product = pf.createProduct(productQuantity, isImported, productName, productPrice);
-            // Add created product to shoppingBasket
+            product = productFactory.createProduct(productQuantity, isImported, productName, productPrice);
+            // Add created product to shoppingBasket for precessing receipt
             shoppingBasket.add(product);
         }
         return shoppingBasket;

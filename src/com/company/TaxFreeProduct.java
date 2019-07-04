@@ -11,7 +11,7 @@ public abstract class TaxFreeProduct extends Product {
      * Parameter: product information
      * Return Type: None
      */
-    TaxFreeProduct(int productQuantity, boolean isImported, String productName, double productPrice){
+    TaxFreeProduct(int productQuantity, boolean isImported, String productName, double productPrice) {
         super(productQuantity, isImported, productName, productPrice);
     }
 

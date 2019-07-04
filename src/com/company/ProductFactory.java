@@ -5,7 +5,9 @@ package com.company;
  */
 class ProductFactory {
     /* Method Name: createProduct
-     * Description: Create product based on given input
+     * Description: Create product based on given input.
+     *              Switch not used in order to create product based on its category, not by full name of product.
+     *              i.e) "box of chocolates" is still a chocolate which should be consider as a Food.
      * Parameter: productQuantity, isImported, productName, productPrice
      * Return Type: Product
      */
